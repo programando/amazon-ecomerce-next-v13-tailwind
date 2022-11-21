@@ -9,6 +9,15 @@
    5. add tailwind classes
 
 2. List products
+
    1. add data.js
    2. add images
    3. render products
+
+3. Product detail page
+   1. create product page
+   2. create 3 columns
+   3. show image i first column
+   4. show product info in second column
+   5. show add to cart action on third column
+   6. add styles
