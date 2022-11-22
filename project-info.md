@@ -15,9 +15,26 @@
    3. render products
 
 3. Product detail page
-   1. create product page
+
+   1. create product page with parameters
    2. create 3 columns
    3. show image i first column
    4. show product info in second column
    5. show add to cart action on third column
    6. add styles
+
+4. Handle Add to cart
+
+   1. define react context
+   2. define cart items stat
+   3. create add cart action
+   4. add reducer
+   5. create tore provider
+   6. handle add to cart button
+
+5. create cart page
+
+   1. create cart.js
+   2. use context to get cart items
+   3. list items cart items
+   4. redirect to cart screen after add to cart

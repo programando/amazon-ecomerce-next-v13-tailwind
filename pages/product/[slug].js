@@ -1,17 +1,33 @@
 import Image from 'next/image';
 import Layout from '../../components/Layout';
 import Link from 'next/link';
-import React from 'react';
+import React, { useContext } from 'react';
 import data from '../../utils/data.js';
 import { useRouter } from 'next/router';
+import { Store } from '../../utils/Store';
 
 export default function ProductScreen() {
+  const { state, dispatch } = useContext(Store);
   const { query } = useRouter();
+  const router = useRouter();
   const { slug } = query;
   const product = data.products.find((x) => x.slug === slug);
   if (!product) {
     return <div>Product not found</div>;
   }
+  const addToCartHandler = () => {
+    const existItem = state.cart.cartItems.find((x) => x.slug === product.slug);
+    const quantity = existItem ? existItem.quantity + 1 : 1;
+    if (product.countInStock < quantity) {
+      alert('no product in store');
+      return;
+    }
+    dispatch({
+      type: 'CART_ADD_ITEM',
+      payload: { ...product, quantity: quantity },
+    });
+    router.push('/cart');
+  };
 
   return (
     <Layout title={product.name}>
@@ -21,7 +37,7 @@ export default function ProductScreen() {
           Back to products
         </Link>
       </div>
-      <div className="grid md:grid-cols-4 md:gap-3">
+      <div className="grid md:grid-cols-4 md:gap-8">
         <div className="md:col-span-2">
           <Image
             src={product.image}
@@ -54,7 +70,10 @@ export default function ProductScreen() {
             <div>status</div>
             <div>{product.countInStock > 0 ? 'In stock' : 'unavailable'}</div>
           </div>
-          <button className="primary-button w-full"> Add to cart</button>
+          <button className="primary-button w-full" onClick={addToCartHandler}>
+            {' '}
+            Add to cart
+          </button>
         </div>
       </div>
     </Layout>
