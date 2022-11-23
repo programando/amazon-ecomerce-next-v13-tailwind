@@ -38,3 +38,7 @@
    2. use context to get cart items
    3. list items cart items
    4. redirect to cart screen after add to cart
+
+6. add select to plus quantity
+   1. add select box for quentity
+   2. handle box change
