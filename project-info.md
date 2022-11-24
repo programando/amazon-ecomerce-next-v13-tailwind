@@ -40,5 +40,10 @@
    4. redirect to cart screen after add to cart
 
 6. add select to plus quantity
-   1. add select box for quentity
+
+   1. add select box for quuantity
    2. handle box change
+
+7. save the cart
+   1. how to implement cookies to save data cart throught js-cookie
+   2. save and retreive cart items in cookies

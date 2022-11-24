@@ -7,10 +7,10 @@ import { useRouter } from 'next/router';
 import { Store } from '../../utils/Store';
 
 export default function ProductScreen() {
-  const { state, dispatch } = useContext(Store);
-  const { query } = useRouter();
   const router = useRouter();
+  const { query } = useRouter();
   const { slug } = query;
+  const { state, dispatch } = useContext(Store);
   const product = data.products.find((x) => x.slug === slug);
   if (!product) {
     return <div>Product not found</div>;

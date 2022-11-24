@@ -5,8 +5,11 @@ import { Store } from '../utils/Store';
 import { XCircleIcon } from '@heroicons/react/outline';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import dynamic from 'next/dynamic';
+// dynamic componente del lado del cliente
+// solve this error Hydration failed because the initial UI does not match what was rendered on the server.
 
-export default function CartScrenn() {
+function CartScreen() {
   const { state, dispatch } = useContext(Store);
   const router = useRouter();
   const {
@@ -108,3 +111,5 @@ export default function CartScrenn() {
     </Layout>
   );
 }
+
+export default dynamic(() => Promise.resolve(CartScreen), { ssr: false });
